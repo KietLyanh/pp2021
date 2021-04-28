@@ -28,14 +28,12 @@ class Student:
     def get_key(self):
         return self.get_ID()
 
-    def displayStudentInformation(self):
-        print("Student Id: %d, Student name: %s, Student dob: %s" % (self.ID, self.name, self.DoB))
-
 
 class Course:
-    def __init__(self, courseID, courseName):
+    def __init__(self, courseID, courseName, courseMark):
         self.courseID = courseID
         self.courseName = courseName
+        self.courseMark = courseMark
 
     def get_course_ID(self):
         return self.courseID
@@ -49,47 +47,16 @@ class Course:
     def set_course_ID(self, courseID):
         self.courseID = courseID
 
+    def setMark(self, students):
+        for student in students:
+            studentdName = student.get_name()
+            mark = input("Enter the mark:")
+
     def __eq__(self, other):
         return self.courseID == other.courseID
 
     def get_key(self):
         return self.get_course_ID()
-
-    def displayCourseInformation(self):
-        print("CourseID: {}, Course name: {}".format(self.courseID, self.courseName))
-
-
-class Mark:
-    def __init__(self, studentID, courseID, grade):
-        self.studentID = studentID
-        self.courseID = courseID
-        self.grade = grade
-
-    def get_student_ID(self):
-        return self.studentID
-
-    def get_course_ID(self):
-        return self.courseID
-
-    def get_grade(self):
-        return self.grade
-
-    def set_student_ID(self, studentID):
-        self.studentID = studentID
-
-    def set_course_ID(self, courseID):
-        self.courseID = courseID
-
-    def set_grade(self, grade):
-        self.grade = grade
-
-    def __eq__(self, other):
-        return self.get_student_ID() == other.get_student_ID() and self.get_course_ID() == other.get_course_ID()
-
-    def displayStudentMark(self, studentName):
-        print("Student Id: {}, Student Name: {}, Student Mark: {} ".format(self.studentID, studentName, self.grade))
-
-
 
 
 students = []
@@ -102,53 +69,9 @@ def inputstudentsinaclass():
     return numberstudentsinaclass
 
 
-def inputstudentinformation():
-    studentID = input("Input student ID: ")
-    studentName = input("Input student name: ")
-    studentDoB = input("Input student DoB: ")
-    studentsinfo = {"Student ID": studentID, "Student Name": studentName, "Student DoB": studentDoB}
-    return studentsinfo
-
-
 def inputnumberofcourses():
     numberofcourses = int(input("Input the number of courses: "))
     return numberofcourses
-
-
-def inputcourseinformation():
-    courseID = input("Input course ID: ")
-    coursename = input("Input course name: ")
-    coursesinfo = {"Course ID": courseID, "Course Name": coursename}
-    return coursesinfo 
-
-def CourseMarkIntroduction():
-    print("Enter the mark about the course")
-    numberofstudent = int(input("Number of student in the course:"))
-    return numberofstudent
-
-def markinput():
-    print("Enter the mark of each student")
-    mark = input("Mark:")
-    markinfo = {"Student Mark": mark}
-    return markinfo
-
-
-def studentinfo(students):
-    print('Student Info:')
-    for key in studentsinfo:
-        print(key, ':', studentsinfo[key])
-
-
-
-def courseinfo(courses):
-    print('Course Info:')
-    for key in coursesinfo:
-        print(key, ':', coursesinfo[key])
-
-def showmark(marks):
-    print("Mark")
-    for key in markinfo:
-        print(key, ':', markinfo[key])
 
 
 #main
