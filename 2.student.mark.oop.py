@@ -1,32 +1,26 @@
 class Student:
-    def __init__(self, ID, name, DoB):
+    def __init__(self, ID, Name, DoB):
         self.ID = ID
-        self.name = name
+        self.Name = Name
         self.DoB = DoB
 
-    def get_ID(self):
+    def getID(self):
         return self.ID
 
-    def get_name(self):
-        return self.name
+    def getName(self):
+        return self.Name
 
-    def get_DoB(self):
+    def getDoB(self):
         return self.DoB
 
     def setID(self, ID):
         self.ID = ID
 
-    def setname(self, name):
-        self.name = name
+    def setName(self, Name):
+        self.name = Name
 
     def setDoB(self, DoB):
         self.DoB = DoB
-
-    def __eq__(self, other):
-        return self.ID == other.ID
-
-    def get_key(self):
-        return self.get_ID()
 
 
 class Course:
@@ -35,34 +29,26 @@ class Course:
         self.courseName = courseName
         self.courseMark = courseMark
 
-    def get_course_ID(self):
+    def getcourseID(self):
         return self.courseID
 
-    def get_course_name(self):
+    def getcoursename(self):
         return self.courseName
 
-    def set_course_name(self, courseName):
+    def setcoursename(self, courseName):
         self.courseName = courseName
 
-    def set_course_ID(self, courseID):
+    def setcourseID(self, courseID):
         self.courseID = courseID
 
     def setMark(self, students):
         for student in students:
-            studentdName = student.get_name()
-            mark = input("Enter the mark:")
+            studentName = students.get_Name()
+            mark = input("Enter the mark: ")
 
-    def __eq__(self, other):
-        return self.courseID == other.courseID
-
-    def get_key(self):
-        return self.get_course_ID()
-
-
-students = []
-courses = []
-marks = []
-
+if __name__ == "_main_":
+    students = []
+    courses = []
 
 def inputstudentsinaclass():
     numberstudentsinaclass = int(input("Input number of students in a class: "))
@@ -74,75 +60,35 @@ def inputnumberofcourses():
     return numberofcourses
 
 
+def courseinfo(courses):
+    print("The courses that the students taking in are:")
+    for course in courses:
+        print(course.getcoursename())
+
+def addCourse():
+    for i in range(inputnumberofcourses()):
+        coursename = input("Input course name: ")
+        studentID = input("Input student ID: ")
+        mark = input("Enter the mark of the students: ")
+        return courses(Course(coursename, studentID, mark))
+
+def addStudent():
+     for i in range(inputstudentsinaclass()):
+        studentName = input("Input student name: ")
+        studentDoB = input("Input student DoB: ")
+        studentID = input("Input student ID: ")
+        students.append(Student(studentName, studentDoB, studentID))   
 #main
 
 print("Welcome to student mark management program")
-print("First you need to enter number of student: ")
-numberofstudents = inputstudentsinaclass()
-for x in range (0, numberofstudents):
-    studentsinfo = inputstudentinformation()
-    students += studentsinfo
-print("Second, you need to enter number of course: ")
-numberofcourses = inputnumberofcourses()
-for y in range (0, numberofcourses):
-    coursesinfo = inputcourseinformation()
-    courses += coursesinfo
-studentmark = CourseMarkIntroduction()
-for z in range (0, studentmark):
-    markinfo = markinput()
-    marks += markinfo
-
 print("What do you want to do")
-print("1. See course information")
-print("2. See student information")
-print("3. See student mark")
-print("4. Add student")
-print("5. Add course")
-print("6. Input Mark")
+print("1. Add student")
+print("2. Add course")
 options = int(input("Choose option: "))
 
 if options == 1:
-    courseinfo(courses)
+    addStudent()
 elif options == 2:
-    studentinfo(students)
-elif options == 3:
-    showmark(marks)
-elif options == 4:
-    inputstudentinformation()
-elif options == 5:
-    inputcourseinformation()
-elif options == 6:
-    markinput()
+    addCourse()
 else:
     print("Error")
-
-print("Do you want to something else? Yes/No")
-somethingelse = input("Do you want to something else?")
-if somethingelse == ("Yes"):
-    print("1. See course information")
-    print("2. See student information")
-    print("3. See student mark")
-    print("4. Add student")
-    print("5. Add course")
-    print("6. Input Mark")
-    options2 = int(input("Choose option: "))
-
-    if options == 1:
-        courseinfo(courses)
-    elif options == 2:
-        studentinfo(students)
-    elif options == 3:
-        showmark(marks)
-    elif options == 4:
-        inputstudentinformation()
-    elif options == 5:
-        inputcourseinformation()
-    elif options == 6:
-        markinput()
-    else:
-        print("Error")
-else:
-    print("Shutdown")
-
-
-
